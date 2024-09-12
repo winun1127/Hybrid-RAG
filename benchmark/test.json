@@ -1,0 +1,22 @@
+{
+    "questions": [
+        "What are the two main tasks BERT is pre-trained on?",
+        "What model sizes are reported for BERT, and what are their specifications?",
+        "How does BERT's architecture facilitate the use of a unified model across diverse NLP tasks?",
+        "How does BERT's performance on the GLUE benchmark compare to previous state-of-the-art models?",
+        "What significant improvements does BERT bring to the SQuAD v1.1,v2.0 and v13.5 tasks compared to prior models?",
+        "Explain how BERT uses the 'masked LM' (MLM) for its pre-training.",
+        "Discuss the impact of model size on BERT's performance across different tasks.",
+        "What datasets were used for BERT's pre-training and why?"
+    ],
+    "ground_truths": [
+        "Masked LM (MLM) and Next Sentence Prediction (NSP).",
+        "BERTBASE (L=12, H=768, A=12, Total Parameters=110M) and BERTLARGE (L=24, H=1024, A=16, Total Parameters=340M).",
+        "BERT uses a multi-layer bidirectional Transformer encoder architecture, allowing for minimal task-specific architecture modifications in fine-tuning.",
+        "BERT achieved new state-of-the-art on the GLUE benchmark (80.5%), surpassing the previous best models.",
+        "BERT set new records on SQuAD v1.1 and v2.0, significantly outperforming the top leaderboard systems at the time. Version 13.5 doesn't exist. ",
+        "In MLM, a percentage of input tokens are masked randomly, and the model predicts these masked tokens based on their context.",
+        "Larger BERT models consistently show better performance across tasks, indicating the importance of model size in achieving high accuracy.",
+        "BooksCorpus (800M words) and English Wikipedia (2500M words), chosen for their document-level organization and volume of data."
+    ]        
+}
