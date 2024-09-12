@@ -1,0 +1,9 @@
+langchain
+langchain-openai
+langchain-community
+langchain-experimental
+langchain-text-splitters
+pypdf
+faiss-cpu
+neo4j
+ragas
