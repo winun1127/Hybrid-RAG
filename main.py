@@ -4,22 +4,20 @@ import tqdm
 import argparse
 import datetime
 from datasets import Dataset
-from operator import itemgetter
 
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.chains import GraphCypherQAChain, create_retrieval_chain
+from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain_core.prompts import ChatPromptTemplate, PromptTemplate, FewShotPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough, RunnableParallel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.graphs import Neo4jGraph
 from langchain_community.vectorstores import FAISS
 
 from lib.config import FAST_LLM
-from lib.utils.utils import get_benchmark, print_mean_scores
+from lib.utils.utils import get_benchmark, print_mean_scores, load_documents_from_pdfs
 from lib.utils.graph import graph_retriever, hybrid_retriever
 from lib.pipeline import evaluate_ragas_dataset
-from preprocess import load_documents_from_pdfs
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -27,8 +25,8 @@ warnings.filterwarnings("ignore")
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--name', default='hybrid', type=str, choices=['vector', 'graph', 'hybrid'])
-    parser.add_argument('--dataset', default='test', type=str, choices=['test', 'ARAGOG'])
+    parser.add_argument('--name', default='vector', type=str, choices=['vector', 'graph', 'hybrid'])
+    parser.add_argument('--dataset', default='ARAGOG', type=str, choices=['test', 'ARAGOG'])
     parser.add_argument('--hybrid_mode', default='concat', type=str, choices=['concat', 'summarize'])
     try:
         args = parser.parse_args()
@@ -54,6 +52,7 @@ def main(args):
     # ----------------------------------------------------------------------
     # Load
     # ----------------------------------------------------------------------
+    print(f"Title: {args.name} pipeline on {args.dataset} dataset")
     print(f"Loading {args.dataset} dataset...")
     
     data_dir = f"./data/{args.dataset}"
