@@ -6,14 +6,7 @@
 - Benchmark dataset: **ARAGOG** [[Paper](https://arxiv.org/abs/2404.01037)] [[Code](https://github.com/predlico/ARAGOG)]
   - 107 QA pairs from 16 AI-arxiv papers
 - Evaluation metric: **RAGAS** [[Paper](https://arxiv.org/abs/2309.15217)] [[Code](https://github.com/explodinggradients/ragas)]
-  - Generation
-    - Faithfulness: 
-    - Answer relevancy: 
-    - Answer correctness: 
-    - Answer similarity: 
-  - Retrieval
-    - Context precision: 
-    - Context recall: 
+  - Check out this [link](https://docs.ragas.io/en/stable/concepts/metrics/index.html#ragas-metrics) for detailed information on the metrics
 
 ## Results
 | RAGAS                     | Faithfulness | Answer relevancy | Answer correctness | Answer similarity | Context precision | Context recall |
@@ -49,3 +42,12 @@ python preprocess.py --dataset ARAGOG
 ```bash
 python main.py --name hybrid --dataset ARAGOG
 ```
+
+## Dependencies
+| Tool/Library | Version       |
+|--------------|---------------|
+| Python       | 3.10+         |
+| LangChain    | 0.2.16        |
+| Neo4j        | 5.23.0        |
+| FAISS        | 1.8.0.post1   |
+| RAGAS        | 0.1.16        |
