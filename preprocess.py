@@ -15,7 +15,7 @@ def get_args():
     Parse command-line arguments for dataset selection.
     """
     parser = argparse.ArgumentParser(description="Process PDF files and build knowledge graphs.")
-    parser.add_argument('--dataset', default='test', type=str, choices=['test', 'ARAGOG'])
+    parser.add_argument('--dataset', default='ARAGOG', type=str, choices=['test', 'ARAGOG'])
     
     try:
         args = parser.parse_args()
@@ -45,8 +45,8 @@ def main(args):
         llm_transformer = LLMGraphTransformer(
             llm=ChatOpenAI(model="gpt-4o-mini", temperature=0),
             allowed_nodes=[
-                "Model", "Technology", "Concept", "Dataset", "Task", "Metric",
-                "Layer", "Architecture", "Publication", "Researcher", "Organization",
+                "Document", "Model", "Technology", "Concept", "Dataset", "Task", "Metric",
+                "Layer", "Architecture", "Publication", "Organization",
             ],
             allowed_relationships=[
                 "RELATED_TO", "BASED_ON", "TRAINED_ON", "EVALUATED_ON", "PERFORMS",
